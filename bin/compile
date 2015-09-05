@@ -185,10 +185,6 @@ source $BIN_DIR/steps/gdal
 # Install dependencies with Pip.
 source $BIN_DIR/steps/pip-install
 
-# Django collectstatic support.
-sub-env $BIN_DIR/steps/collectstatic
-
-
 # ### Finalize
 #
 
@@ -205,6 +201,9 @@ set-env LD_LIBRARY_PATH "/app/.heroku/vendor/lib:/app/.heroku/python/lib:$GEOS_L
 set-default-env LANG en_US.UTF-8
 set-default-env PYTHONHASHSEED random
 set-default-env PYTHONPATH /app/
+
+# Django collectstatic support.
+sub-env $BIN_DIR/steps/collectstatic
 
 # Install sane-default script for WEB_CONCURRENCY environment variable.
 cp $ROOT_DIR/vendor/python.webconcurrency.sh $WEBCONCURRENCY_PROFILE_PATH
